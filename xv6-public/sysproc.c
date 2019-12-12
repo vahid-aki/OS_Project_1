@@ -92,8 +92,6 @@ sys_uptime(void)
 
 int
 sys_getppid(void) {
-  // struct proc P;
-  // argint(0,&P);
   return getppid(myproc());
 }
 
@@ -102,4 +100,11 @@ sys_getChildren(void) {
   int parent_id;
   argint(0,&parent_id);
   return getChildren(parent_id);
+}
+
+int
+sys_getCount(void) {
+  int index;
+  argint(0,&index);
+  return getCount(index);
 }

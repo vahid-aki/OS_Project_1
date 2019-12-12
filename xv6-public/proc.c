@@ -89,6 +89,9 @@ found:
   p->state = EMBRYO;
   p->pid = nextpid++;
 
+  for(int i=0; i<30; i++)
+    p->numSysCalls[i] = 0;
+
   release(&ptable.lock);
 
   // Allocate kernel stack.
@@ -564,4 +567,10 @@ getChildren(int parent_id)
   release(&ptable.lock);
 
   return ids;
+}
+
+int
+getCount(int index)
+{
+  return myproc()->numSysCalls[index];
 }

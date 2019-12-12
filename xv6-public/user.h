@@ -26,6 +26,7 @@ int sleep(int);
 int uptime(void);
 int getppid(struct proc*);
 int getChildren(int);
+int getCount(int);
 
 // ulib.c
 int stat(const char*, struct stat*);
