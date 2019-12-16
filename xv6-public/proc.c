@@ -343,6 +343,7 @@ scheduler(void)
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
       c->proc = p;
+      // for(int i=0; i < QUANTUM; i++)
       switchuvm(p);
       p->state = RUNNING;
 
