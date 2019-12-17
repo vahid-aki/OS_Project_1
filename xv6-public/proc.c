@@ -88,6 +88,8 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
+  p->priority = 5;
+  p->calculatedPriority = minPriority();
 
   for(int i=0; i<30; i++)
     p->numSysCalls[i] = 0;
@@ -333,12 +335,22 @@ scheduler(void)
     // Enable interrupts on this processor.
     sti();
 
+    struct proc *highP;
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
-
+      highP = p;
+    // choose one with highest priority
+     struct proc *p1;
+     for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
+       if(p1->state != RUNNABLE)
+         continue;
+       if ( highP->calculatedPriority > p1->calculatedPriority )   // larger value, lower priority
+         highP = p1;
+     }
+     p = highP;
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
@@ -346,7 +358,7 @@ scheduler(void)
       // for(int i=0; i < QUANTUM; i++)
       switchuvm(p);
       p->state = RUNNING;
-
+      p->calculatedPriority += p->priority;
       swtch(&(c->scheduler), p->context);
       switchkvm();
 
@@ -574,4 +586,19 @@ int
 getCount(int index)
 {
   return myproc()->numSysCalls[index];
+}
+
+int
+minPriority()
+{
+  struct proc *p;
+  int min = -1;
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+  {
+    if(p->state != RUNNABLE)
+      continue;
+    if (p->calculatedPriority < min || min == -1)
+      min = p->calculatedPriority;
+  }
+  return min;
 }

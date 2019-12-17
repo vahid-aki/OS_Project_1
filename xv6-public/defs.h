@@ -123,6 +123,7 @@ void            yield(void);
 int             getppid(struct proc*);
 int             getChildren(int);
 int             getCount(int);
+int             minPriority();
 
 // swtch.S
 void            swtch(struct context**, struct context*);

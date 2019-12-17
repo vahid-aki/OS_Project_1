@@ -27,6 +27,7 @@ int uptime(void);
 int getppid(struct proc*);
 int getChildren(int);
 int getCount(int);
+int changePriority(int);
 
 // ulib.c
 int stat(const char*, struct stat*);

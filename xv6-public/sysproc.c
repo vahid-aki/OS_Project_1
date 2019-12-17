@@ -98,13 +98,26 @@ sys_getppid(void) {
 int
 sys_getChildren(void) {
   int parent_id;
-  argint(0,&parent_id);
+  if(argint(0,&parent_id) < 0)
+    return -1;
   return getChildren(parent_id);
 }
 
 int
 sys_getCount(void) {
   int index;
-  argint(0,&index);
+  if (argint(0,&index) < 0)
+    return -1;
   return getCount(index);
+}
+
+int
+sys_changePriority(void) {
+  int priority_num;
+  if(argint(0,&priority_num) < 0)
+    return -1;
+  if(priority_num > 5 || priority_num < 1)
+    return -1;
+  myproc()->priority = priority_num;
+    return 0;
 }
