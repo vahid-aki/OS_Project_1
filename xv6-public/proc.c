@@ -7,6 +7,7 @@
 #include "proc.h"
 #include "spinlock.h"
 
+static int policy = 0;
 struct {
   struct spinlock lock;
   struct proc proc[NPROC];
@@ -342,15 +343,19 @@ scheduler(void)
       if(p->state != RUNNABLE)
         continue;
       highP = p;
+
     // choose one with highest priority
-     struct proc *p1;
-     for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
-       if(p1->state != RUNNABLE)
-         continue;
-       if ( highP->calculatedPriority > p1->calculatedPriority )   // larger value, lower priority
-         highP = p1;
-     }
-     p = highP;
+    if (policy == 2) {
+      struct proc *p1;
+      for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
+        if(p1->state != RUNNABLE)
+          continue;
+        if ( highP->calculatedPriority > p1->calculatedPriority )   // larger value, lower priority
+          highP = p1;
+      }
+      p = highP;
+    }
+
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
@@ -601,4 +606,11 @@ minPriority()
       min = p->calculatedPriority;
   }
   return min;
+}
+
+int
+changePolicy(int policy_num)
+{
+    policy = policy_num;
+    return 1;
 }

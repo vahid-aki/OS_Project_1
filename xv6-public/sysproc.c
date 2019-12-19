@@ -121,3 +121,15 @@ sys_changePriority(void) {
   myproc()->priority = priority_num;
     return 0;
 }
+
+int
+sys_changePolicy(void) {
+  int policy_num;
+  if(argint(0,&policy_num) < 0)
+    return -1;
+  if(policy_num > 2 || policy_num < 0)
+    return -1;
+
+  changeTrapPolicy(policy_num);
+  return changePolicy(policy_num);
+}

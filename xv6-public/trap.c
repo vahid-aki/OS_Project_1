@@ -8,6 +8,7 @@
 #include "traps.h"
 #include "spinlock.h"
 
+int policy;
 // Interrupt descriptor table (shared by all CPUs).
 struct gatedesc idt[256];
 extern uint vectors[];  // in vectors.S: array of 256 entry pointers
@@ -103,10 +104,24 @@ trap(struct trapframe *tf)
   // Force process to give up CPU on clock tick.
   // If interrupts were on while locks held, would need to check nlock.
   if(myproc() && myproc()->state == RUNNING &&
-     tf->trapno == T_IRQ0+IRQ_TIMER && ticks%QUANTUM == 0)
-    yield();
+     tf->trapno == T_IRQ0+IRQ_TIMER)
+     {
+       if(policy == 0)
+          yield();
+       else if(ticks%QUANTUM == 0)
+          yield();
+     }
 
   // Check if the process has been killed since we yielded
   if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER)
     exit();
+}
+
+int changeTrapPolicy(int policy_num)
+{
+  if(policy_num > 2 || policy_num < 0)
+    return -1;
+
+  policy = policy_num;
+  return 1;
 }

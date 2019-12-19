@@ -10,6 +10,8 @@ struct sleeplock;
 struct stat;
 struct superblock;
 
+// extern static int policy;
+
 // bio.c
 void            binit(void);
 struct buf*     bread(uint, uint);
@@ -124,6 +126,7 @@ int             getppid(struct proc*);
 int             getChildren(int);
 int             getCount(int);
 int             minPriority();
+int             changePolicy(int);
 
 // swtch.S
 void            swtch(struct context**, struct context*);
@@ -168,6 +171,7 @@ void            idtinit(void);
 extern uint     ticks;
 void            tvinit(void);
 extern struct spinlock tickslock;
+int             changeTrapPolicy(int);
 
 // uart.c
 void            uartinit(void);
