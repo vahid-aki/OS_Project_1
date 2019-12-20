@@ -127,6 +127,8 @@ int             getChildren(int);
 int             getCount(int);
 int             minPriority();
 int             changePolicy(int);
+int             waitForChild(struct timeVariables*);
+void            update_time();
 
 // swtch.S
 void            swtch(struct context**, struct context*);

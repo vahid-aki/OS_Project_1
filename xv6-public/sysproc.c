@@ -133,3 +133,12 @@ sys_changePolicy(void) {
   changeTrapPolicy(policy_num);
   return changePolicy(policy_num);
 }
+
+int
+sys_waitForChild(void)
+{
+  struct timeVariables *time_variable;
+  if (argptr(0, (void*)&time_variable, sizeof(*time_variable)) < 0)
+    return -1;
+  return waitForChild(time_variable);
+}

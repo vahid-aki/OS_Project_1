@@ -95,6 +95,12 @@ found:
   for(int i=0; i<30; i++)
     p->numSysCalls[i] = 0;
 
+  p->creationTime=ticks;
+  p->terminationTime = 0;
+  p->sleepingTime = 0;
+  p->readyTime = 0;
+  p->runningTime = 0;
+
   release(&ptable.lock);
 
   // Allocate kernel stack.
@@ -269,6 +275,7 @@ exit(void)
 
   // Jump into the scheduler, never to return.
   curproc->state = ZOMBIE;
+  curproc->terminationTime=ticks;
   sched();
   panic("zombie exit");
 }
@@ -613,4 +620,73 @@ changePolicy(int policy_num)
 {
     policy = policy_num;
     return 1;
+}
+
+int
+waitForChild(struct timeVariables *time_variable)
+{
+  struct proc *p;
+  int havekids, pid;
+  struct proc *curproc = myproc();
+
+  acquire(&ptable.lock);
+  for(;;){
+    // Scan through table looking for exited children.
+    havekids = 0;
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if(p->parent != curproc)
+        continue;
+      havekids = 1;
+      if(p->state == ZOMBIE){
+        // Found one.
+        pid = p->pid;
+        kfree(p->kstack);
+        p->kstack = 0;
+        freevm(p->pgdir);
+        p->pid = 0;
+        p->parent = 0;
+        p->name[0] = 0;
+        p->killed = 0;
+        p->state = UNUSED;
+
+        //############_timeVariables__############
+        time_variable->creationTime = p->creationTime;
+        time_variable->terminationTime = p->terminationTime;
+        time_variable->runningTime = p->runningTime;
+        time_variable->readyTime = p->readyTime;
+        time_variable->sleepingTime = p->sleepingTime;
+        //############_timeVariables__############
+
+        release(&ptable.lock);
+        return pid;
+      }
+    }
+
+    // No point waiting if we don't have any children.
+    if(!havekids || curproc->killed){
+      release(&ptable.lock);
+      return -1;
+    }
+
+    // Wait for children to exit.  (See wakeup1 call in proc_exit.)
+    sleep(curproc, &ptable.lock);  //DOC: wait-sleep
+  }
+}
+
+void
+update_time(){
+  struct proc *p;
+
+  acquire(&ptable.lock);
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if (p->state == RUNNING)
+        p->runningTime++;
+      else if (p->state == SLEEPING)
+        p->sleepingTime++;
+      else if (p->state == RUNNABLE)
+        p->readyTime++;
+      else
+        continue;
+  }
+  release(&ptable.lock);
 }
