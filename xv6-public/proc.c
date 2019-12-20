@@ -612,6 +612,10 @@ minPriority()
     if (p->calculatedPriority < min || min == -1)
       min = p->calculatedPriority;
   }
+
+  if(min == -1)
+    return 0;
+
   return min;
 }
 
