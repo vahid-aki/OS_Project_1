@@ -1,0 +1,138 @@
+3.5.2 Modified Priority Scheduling Algorithm’s performance
+----------------------------------------------------------
+______________________________________________________________________________________
+#############__Turnaround time, CBT, and Waiting time for all children__##############
+Process: 0 	 child id: 4
+Turnaround time: 57 	 CBT: 41 	 Waiting time: 16
+
+######################################################################################
+Process: 1 	 child id: 25
+Turnaround time: 61 	 CBT: 49 	 Waiting time: 12
+
+######################################################################################
+Process: 2 	 child id: 6
+Turnaround time: 158 	 CBT: 42 	 Waiting time: 116
+
+######################################################################################
+Process: 3 	 child id: 24
+Turnaround time: 109 	 CBT: 53 	 Waiting time: 56
+
+######################################################################################
+Process: 4 	 child id: 26
+Turnaround time: 160 	 CBT: 64 	 Waiting time: 96
+
+######################################################################################
+Process: 5 	 child id: 28
+Turnaround time: 212 	 CBT: 53 	 Waiting time: 159
+
+######################################################################################
+Process: 6 	 child id: 27
+Turnaround time: 233 	 CBT: 81 	 Waiting time: 152
+
+######################################################################################
+Process: 7 	 child id: 19
+Turnaround time: 288 	 CBT: 78 	 Waiting time: 210
+
+######################################################################################
+Process: 8 	 child id: 22
+Turnaround time: 360 	 CBT: 61 	 Waiting time: 299
+
+######################################################################################
+Process: 9 	 child id: 20
+Turnaround time: 377 	 CBT: 47 	 Waiting time: 330
+
+######################################################################################
+Process: 10 	 child id: 21
+Turnaround time: 392 	 CBT: 68 	 Waiting time: 324
+
+######################################################################################
+Process: 11 	 child id: 23
+Turnaround time: 422 	 CBT: 71 	 Waiting time: 351
+
+######################################################################################
+Process: 12 	 child id: 16
+Turnaround time: 464 	 CBT: 60 	 Waiting time: 404
+
+######################################################################################
+Process: 13 	 child id: 17
+Turnaround time: 497 	 CBT: 56 	 Waiting time: 441
+
+######################################################################################
+Process: 14 	 child id: 15
+Turnaround time: 510 	 CBT: 28 	 Waiting time: 482
+
+######################################################################################
+Process: 15 	 child id: 18
+Turnaround time: 519 	 CBT: 69 	 Waiting time: 450
+
+######################################################################################
+Process: 16 	 child id: 14
+Turnaround time: 535 	 CBT: 41 	 Waiting time: 494
+
+######################################################################################
+Process: 17 	 child id: 9
+Turnaround time: 603 	 CBT: 57 	 Waiting time: 546
+
+######################################################################################
+Process: 18 	 child id: 13
+Turnaround time: 604 	 CBT: 55 	 Waiting time: 549
+
+######################################################################################
+Process: 19 	 child id: 10
+Turnaround time: 621 	 CBT: 21 	 Waiting time: 600
+
+######################################################################################
+Process: 20 	 child id: 12
+Turnaround time: 630 	 CBT: 71 	 Waiting time: 559
+
+######################################################################################
+Process: 21 	 child id: 5
+Turnaround time: 694 	 CBT: 46 	 Waiting time: 648
+
+######################################################################################
+Process: 22 	 child id: 11
+Turnaround time: 709 	 CBT: 67 	 Waiting time: 642
+
+######################################################################################
+Process: 23 	 child id: 7
+Turnaround time: 741 	 CBT: 54 	 Waiting time: 687
+
+######################################################################################
+Process: 24 	 child id: 8
+Turnaround time: 766 	 CBT: 58 	 Waiting time: 708
+
+######################################################################################
+######################################################################################
+
+
+#########__Avg_TT, Avg_CBT, and Ag_WT for each group with the same priority__#########
+
+
+	#########__	Group with Priority: 5	__#########
+Average Turnaround time: 109, 	 Average CBT: 49, 	 Average Waiting time: 59
+
+
+	#########__	Group with Priority: 4	__#########
+Average Turnaround time: 294, 	 Average CBT: 64, 	 Average Waiting time: 230
+
+
+	#########__	Group with Priority: 3	__#########
+Average Turnaround time: 457, 	 Average CBT: 56, 	 Average Waiting time: 400
+
+
+	#########__	Group with Priority: 2	__#########
+Average Turnaround time: 576, 	 Average CBT: 48, 	 Average Waiting time: 527
+
+
+	#########__	Group with Priority: 1	__#########
+Average Turnaround time: 708, 	 Average CBT: 59, 	 Average Waiting time: 648
+
+######################################################################################
+######################################################################################
+
+
+#########################__Total Avg_TT, Avg_CBT, and Ag_WT__#########################
+Average Turnaround time: 428, 	 Average CBT: 55, 	 Average Waiting time: 373
+
+
+

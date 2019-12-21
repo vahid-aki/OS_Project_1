@@ -1,0 +1,369 @@
+3.5.1 Modified XV6 Original Algorithm’s performance
+---------------------------------------------------
+_______________________________________________________________________________________
+#######################################################################################
+####################################__QUANTUM = 1__####################################
+#######################################################################################
+
+	--------------------	Process: 0 	--------------------
+ID: 8
+create: 768 	 terminate: 3162 	 sleep: 388 	 ready: 1496 	 running: 506
+Turnaround time: 2394 	 CBT: 506 	 Waiting time: 1888
+
+	--------------------	Process: 1 	--------------------
+ID: 7
+create: 768 	 terminate: 3381 	 sleep: 419 	 ready: 1648 	 running: 546
+Turnaround time: 2613 	 CBT: 546 	 Waiting time: 2067
+
+	--------------------	Process: 2 	--------------------
+ID: 5
+create: 767 	 terminate: 3477 	 sleep: 432 	 ready: 1694 	 running: 584
+Turnaround time: 2710 	 CBT: 584 	 Waiting time: 2126
+
+	--------------------	Process: 3 	--------------------
+ID: 6
+create: 767 	 terminate: 3546 	 sleep: 438 	 ready: 1745 	 running: 595
+Turnaround time: 2779 	 CBT: 595 	 Waiting time: 2184
+
+	--------------------	Process: 4 	--------------------
+ID: 9
+create: 772 	 terminate: 3575 	 sleep: 432 	 ready: 1858 	 running: 513
+Turnaround time: 2803 	 CBT: 513 	 Waiting time: 2290
+
+	--------------------	Process: 5 	--------------------
+ID: 11
+create: 772 	 terminate: 3766 	 sleep: 480 	 ready: 1979 	 running: 532
+Turnaround time: 2994 	 CBT: 532 	 Waiting time: 2462
+
+	--------------------	Process: 6 	--------------------
+ID: 10
+create: 772 	 terminate: 3775 	 sleep: 446 	 ready: 1955 	 running: 602
+Turnaround time: 3003 	 CBT: 602 	 Waiting time: 2401
+
+	--------------------	Process: 7 	--------------------
+ID: 4
+create: 767 	 terminate: 3810 	 sleep: 490 	 ready: 1896 	 running: 657
+Turnaround time: 3043 	 CBT: 657 	 Waiting time: 2386
+
+	--------------------	Process: 8 	--------------------
+ID: 12
+create: 775 	 terminate: 3881 	 sleep: 479 	 ready: 2055 	 running: 572
+Turnaround time: 3106 	 CBT: 572 	 Waiting time: 2534
+
+	--------------------	Process: 9 	--------------------
+ID: 13
+create: 775 	 terminate: 3911 	 sleep: 472 	 ready: 2103 	 running: 561
+Turnaround time: 3136 	 CBT: 561 	 Waiting time: 2575
+
+
+#########################__Total Avg_TT, Avg_CBT, and Avg_WT__#########################
+
+Average Turnaround time: 2858, 	 Average CBT: 566, 	 Average Waiting time: 2291
+
+
+_______________________________________________________________________________________
+#######################################################################################
+####################################__QUANTUM = 10__###################################
+#######################################################################################
+
+	--------------------	Process: 0 	--------------------
+ID: 4
+create: 866 	 terminate: 2578 	 sleep: 181 	 ready: 897 	 running: 634
+Turnaround time: 1712 	 CBT: 634 	 Waiting time: 1078
+
+	--------------------	Process: 1 	--------------------
+ID: 7
+create: 867 	 terminate: 2833 	 sleep: 205 	 ready: 1153 	 running: 608
+Turnaround time: 1966 	 CBT: 608 	 Waiting time: 1358
+
+	--------------------	Process: 2 	--------------------
+ID: 5
+create: 866 	 terminate: 2942 	 sleep: 226 	 ready: 1163 	 running: 687
+Turnaround time: 2076 	 CBT: 687 	 Waiting time: 1389
+
+	--------------------	Process: 3 	--------------------
+ID: 8
+create: 867 	 terminate: 3334 	 sleep: 288 	 ready: 1598 	 running: 581
+Turnaround time: 2467 	 CBT: 581 	 Waiting time: 1886
+
+	--------------------	Process: 4 	--------------------
+ID: 6
+create: 866 	 terminate: 3587 	 sleep: 327 	 ready: 1779 	 running: 614
+Turnaround time: 2721 	 CBT: 614 	 Waiting time: 2107
+
+	--------------------	Process: 5 	--------------------
+ID: 9
+create: 867 	 terminate: 3632 	 sleep: 321 	 ready: 1897 	 running: 546
+Turnaround time: 2765 	 CBT: 546 	 Waiting time: 2219
+
+	--------------------	Process: 6 	--------------------
+ID: 10
+create: 868 	 terminate: 3673 	 sleep: 315 	 ready: 1899 	 running: 591
+Turnaround time: 2805 	 CBT: 591 	 Waiting time: 2214
+
+	--------------------	Process: 7 	--------------------
+ID: 11
+create: 868 	 terminate: 3967 	 sleep: 351 	 ready: 2173 	 running: 575
+Turnaround time: 3099 	 CBT: 575 	 Waiting time: 2524
+
+	--------------------	Process: 8 	--------------------
+ID: 12
+create: 868 	 terminate: 3984 	 sleep: 333 	 ready: 2158 	 running: 625
+Turnaround time: 3116 	 CBT: 625 	 Waiting time: 2491
+
+	--------------------	Process: 9 	--------------------
+ID: 13
+create: 868 	 terminate: 4275 	 sleep: 365 	 ready: 2429 	 running: 612
+Turnaround time: 3407 	 CBT: 612 	 Waiting time: 2795
+
+
+#########################__Total Avg_TT, Avg_CBT, and Avg_WT__#########################
+
+Average Turnaround time: 2613, 	 Average CBT: 607, 	 Average Waiting time: 2006
+
+
+_______________________________________________________________________________________
+#######################################################################################
+####################################__QUANTUM = 100__##################################
+#######################################################################################
+
+	--------------------	Process: 0 	--------------------
+ID: 4
+create: 1164 	 terminate: 1926 	 sleep: 46 	 ready: 104 	 running: 608
+Turnaround time: 762 	 CBT: 608 	 Waiting time: 154
+
+	--------------------	Process: 1 	--------------------
+ID: 5
+create: 1168 	 terminate: 2322 	 sleep: 98 	 ready: 404 	 running: 650
+Turnaround time: 1154 	 CBT: 650 	 Waiting time: 504
+
+	--------------------	Process: 2 	--------------------
+ID: 6
+create: 1170 	 terminate: 2574 	 sleep: 134 	 ready: 532 	 running: 735
+Turnaround time: 1404 	 CBT: 735 	 Waiting time: 669
+
+	--------------------	Process: 3 	--------------------
+ID: 7
+create: 1173 	 terminate: 2732 	 sleep: 128 	 ready: 807 	 running: 624
+Turnaround time: 1559 	 CBT: 624 	 Waiting time: 935
+
+	--------------------	Process: 4 	--------------------
+ID: 8
+create: 1173 	 terminate: 3267 	 sleep: 213 	 ready: 1241 	 running: 640
+Turnaround time: 2094 	 CBT: 640 	 Waiting time: 1454
+
+	--------------------	Process: 5 	--------------------
+ID: 9
+create: 1173 	 terminate: 3374 	 sleep: 217 	 ready: 1351 	 running: 632
+Turnaround time: 2201 	 CBT: 632 	 Waiting time: 1569
+
+	--------------------	Process: 6 	--------------------
+ID: 10
+create: 1174 	 terminate: 3917 	 sleep: 267 	 ready: 1794 	 running: 682
+Turnaround time: 2743 	 CBT: 682 	 Waiting time: 2061
+
+	--------------------	Process: 7 	--------------------
+ID: 11
+create: 1174 	 terminate: 4306 	 sleep: 331 	 ready: 2096 	 running: 705
+Turnaround time: 3132 	 CBT: 705 	 Waiting time: 2427
+
+	--------------------	Process: 8 	--------------------
+ID: 12
+create: 1174 	 terminate: 4615 	 sleep: 362 	 ready: 2380 	 running: 698
+Turnaround time: 3441 	 CBT: 698 	 Waiting time: 2743
+
+	--------------------	Process: 9 	--------------------
+ID: 13
+create: 1175 	 terminate: 4834 	 sleep: 380 	 ready: 2630 	 running: 649
+Turnaround time: 3659 	 CBT: 649 	 Waiting time: 3010
+
+
+#########################__Total Avg_TT, Avg_CBT, and Avg_WT__#########################
+
+Average Turnaround time: 2214, 	 Average CBT: 662, 	 Average Waiting time: 1552
+
+
+_______________________________________________________________________________________
+#######################################################################################
+##################################__QUANTUM= 1000__####################################
+#######################################################################################
+
+	--------------------	Process: 0 	--------------------
+ID: 4
+create: 748 	 terminate: 1353 	 sleep: 45 	 ready: 8 	 running: 552
+Turnaround time: 605 	 CBT: 552 	 Waiting time: 53
+
+	--------------------	Process: 1 	--------------------
+ID: 6
+create: 748 	 terminate: 1713 	 sleep: 50 	 ready: 245 	 running: 669
+Turnaround time: 965 	 CBT: 669 	 Waiting time: 296
+
+	--------------------	Process: 2 	--------------------
+ID: 5
+create: 748 	 terminate: 1782 	 sleep: 97 	 ready: 310 	 running: 627
+Turnaround time: 1034 	 CBT: 627 	 Waiting time: 407
+
+	--------------------	Process: 3 	--------------------
+ID: 7
+create: 749 	 terminate: 2319 	 sleep: 137 	 ready: 876 	 running: 556
+Turnaround time: 1570 	 CBT: 556 	 Waiting time: 1014
+
+	--------------------	Process: 4 	--------------------
+ID: 8
+create: 750 	 terminate: 2464 	 sleep: 155 	 ready: 964 	 running: 595
+Turnaround time: 1714 	 CBT: 595 	 Waiting time: 1119
+
+	--------------------	Process: 5 	--------------------
+ID: 9
+create: 750 	 terminate: 2906 	 sleep: 216 	 ready: 1395 	 running: 543
+Turnaround time: 2156 	 CBT: 543 	 Waiting time: 1613
+
+	--------------------	Process: 6 	--------------------
+ID: 10
+create: 752 	 terminate: 3118 	 sleep: 234 	 ready: 1501 	 running: 630
+Turnaround time: 2366 	 CBT: 630 	 Waiting time: 1736
+
+	--------------------	Process: 7 	--------------------
+ID: 11
+create: 753 	 terminate: 3511 	 sleep: 299 	 ready: 1896 	 running: 562
+Turnaround time: 2758 	 CBT: 562 	 Waiting time: 2196
+
+	--------------------	Process: 8 	--------------------
+ID: 12
+create: 754 	 terminate: 3795 	 sleep: 333 	 ready: 2085 	 running: 623
+Turnaround time: 3041 	 CBT: 623 	 Waiting time: 2418
+
+	--------------------	Process: 9 	--------------------
+ID: 13
+create: 754 	 terminate: 4134 	 sleep: 360 	 ready: 2412 	 running: 608
+Turnaround time: 3380 	 CBT: 608 	 Waiting time: 2772
+
+
+#########################__Total Avg_TT, Avg_CBT, and Avg_WT__#########################
+
+Average Turnaround time: 1958, 	 Average CBT: 596, 	 Average Waiting time: 1362
+
+
+_______________________________________________________________________________________
+#######################################################################################
+##################################__QUANTUM= 10000__###################################
+#######################################################################################
+
+	--------------------	Process: 0 	--------------------
+ID: 4
+create: 1145 	 terminate: 1902 	 sleep: 40 	 ready: 9 	 running: 708
+Turnaround time: 757 	 CBT: 708 	 Waiting time: 49
+
+	--------------------	Process: 1 	--------------------
+ID: 5
+create: 1145 	 terminate: 1898 	 sleep: 36 	 ready: 24 	 running: 693
+Turnaround time: 753 	 CBT: 693 	 Waiting time: 60
+
+	--------------------	Process: 2 	--------------------
+ID: 6
+create: 1145 	 terminate: 2558 	 sleep: 114 	 ready: 691 	 running: 608
+Turnaround time: 1413 	 CBT: 608 	 Waiting time: 805
+
+	--------------------	Process: 3 	--------------------
+ID: 7
+create: 1145 	 terminate: 2589 	 sleep: 109 	 ready: 682 	 running: 652
+Turnaround time: 1444 	 CBT: 652 	 Waiting time: 792
+
+	--------------------	Process: 4 	--------------------
+ID: 8
+create: 1146 	 terminate: 3265 	 sleep: 183 	 ready: 1273 	 running: 663
+Turnaround time: 2119 	 CBT: 663 	 Waiting time: 1456
+
+	--------------------	Process: 5 	--------------------
+ID: 9
+create: 1146 	 terminate: 3441 	 sleep: 211 	 ready: 1307 	 running: 777
+Turnaround time: 2295 	 CBT: 777 	 Waiting time: 1518
+
+	--------------------	Process: 6 	--------------------
+ID: 10
+create: 1146 	 terminate: 3972 	 sleep: 266 	 ready: 1893 	 running: 666
+Turnaround time: 2826 	 CBT: 666 	 Waiting time: 2160
+
+	--------------------	Process: 7 	--------------------
+ID: 11
+create: 1147 	 terminate: 4168 	 sleep: 323 	 ready: 2037 	 running: 659
+Turnaround time: 3021 	 CBT: 659 	 Waiting time: 2362
+
+	--------------------	Process: 8 	--------------------
+ID: 12
+create: 1150 	 terminate: 4707 	 sleep: 371 	 ready: 2519 	 running: 665
+Turnaround time: 3557 	 CBT: 665 	 Waiting time: 2892
+
+	--------------------	Process: 9 	--------------------
+ID: 13
+create: 1152 	 terminate: 4881 	 sleep: 406 	 ready: 2657 	 running: 665
+Turnaround time: 3729 	 CBT: 665 	 Waiting time: 3064
+
+
+#########################__Total Avg_TT, Avg_CBT, and Avg_WT__#########################
+
+Average Turnaround time: 2191, 	 Average CBT: 675, 	 Average Waiting time: 1515
+
+
+_______________________________________________________________________________________
+#######################################################################################
+##################################__QUANTUM= 100000__##################################
+#######################################################################################
+
+	--------------------	Process: 0 	--------------------
+ID: 5
+create: 630 	 terminate: 1170 	 sleep: 30 	 ready: 18 	 running: 492
+Turnaround time: 540 	 CBT: 492 	 Waiting time: 48
+
+	--------------------	Process: 1 	--------------------
+ID: 4
+create: 630 	 terminate: 1285 	 sleep: 23 	 ready: 12 	 running: 620
+Turnaround time: 655 	 CBT: 620 	 Waiting time: 35
+
+	--------------------	Process: 2 	--------------------
+ID: 6
+create: 630 	 terminate: 1857 	 sleep: 100 	 ready: 505 	 running: 621
+Turnaround time: 1227 	 CBT: 621 	 Waiting time: 606
+
+	--------------------	Process: 3 	--------------------
+ID: 7
+create: 631 	 terminate: 2018 	 sleep: 118 	 ready: 599 	 running: 668
+Turnaround time: 1387 	 CBT: 668 	 Waiting time: 719
+
+	--------------------	Process: 4 	--------------------
+ID: 8
+create: 633 	 terminate: 2625 	 sleep: 196 	 ready: 1072 	 running: 723
+Turnaround time: 1992 	 CBT: 723 	 Waiting time: 1269
+
+	--------------------	Process: 5 	--------------------
+ID: 9
+create: 634 	 terminate: 2624 	 sleep: 206 	 ready: 1209 	 running: 575
+Turnaround time: 1990 	 CBT: 575 	 Waiting time: 1415
+
+	--------------------	Process: 6 	--------------------
+ID: 10
+create: 634 	 terminate: 3321 	 sleep: 277 	 ready: 1764 	 running: 646
+Turnaround time: 2687 	 CBT: 646 	 Waiting time: 2041
+
+	--------------------	Process: 7 	--------------------
+ID: 11
+create: 634 	 terminate: 3353 	 sleep: 314 	 ready: 1757 	 running: 647
+Turnaround time: 2719 	 CBT: 647 	 Waiting time: 2072
+
+	--------------------	Process: 8 	--------------------
+ID: 12
+create: 635 	 terminate: 4093 	 sleep: 381 	 ready: 2344 	 running: 733
+Turnaround time: 3458 	 CBT: 733 	 Waiting time: 2725
+
+	--------------------	Process: 9 	--------------------
+ID: 13
+create: 635 	 terminate: 4096 	 sleep: 401 	 ready: 2376 	 running: 684
+Turnaround time: 3461 	 CBT: 684 	 Waiting time: 2777
+
+
+#########################__Total Avg_TT, Avg_CBT, and Avg_WT__#########################
+
+Average Turnaround time: 2011, 	 Average CBT: 640, 	 Average Waiting time: 1370
+
+
+

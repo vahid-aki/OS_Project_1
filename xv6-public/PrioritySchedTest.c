@@ -9,6 +9,7 @@ int main(int argc, char const *argv[])
   int group_TT[5], group_CBT[5], group_WT[5];
   int sum_TT = 0, sum_CBT = 0, sum_WT = 0;
   int avg_TT = 0, avg_CBT = 0, avg_WT = 0;
+  int pid[fork_num];
 
   for(int i=0; i<5; i++)
   {
@@ -32,15 +33,16 @@ int main(int argc, char const *argv[])
     }
   }
 
+  for (int i=0; i<fork_num; i++)
+    pid[i] = waitForChild(&time_variable[i]);
+
+  printf(1, "\n#############__Turnaround time, CBT, and Waiting time for all children__##############\n");
   for(int i=0; i<fork_num; i++)
   {
-    printf(1, "\n#############__Turnaround time, CBT, and Waiting time for all children__##############\n");
-    printf(1,"child id: %d\n",waitForChild(&time_variable[i]));
-
+    printf(1,"Process: %d \t child id: %d\n", i, pid[i]);
     // printf(1, "create: %d \t terminate: %d \t sleep: %d \t ready: %d \t running: %d\n",
     //         time_variable[i].creationTime, time_variable[i].terminationTime,
     //         time_variable[i].sleepingTime, time_variable[i].readyTime, time_variable[i].runningTime);
-
     printf(1, "Turnaround time: %d \t CBT: %d \t Waiting time: %d\n",
         (time_variable[i].terminationTime - time_variable[i].creationTime),
         time_variable[i].runningTime,
@@ -52,6 +54,8 @@ int main(int argc, char const *argv[])
     printf(1, "\n######################################################################################\n");
   }
 
+  printf(1, "######################################################################################\n");
+  printf(1, "\n");
   printf(1, "\n#########__Avg_TT, Avg_CBT, and Ag_WT for each group with the same priority__#########\n");
   for (int i=0; i<5; i++)
   {
@@ -75,6 +79,7 @@ int main(int argc, char const *argv[])
   printf(1, "Average Turnaround time: %d, \t Average CBT: %d, \t Average Waiting time: %d\n",
                       avg_TT,                    avg_CBT,               avg_WT);
 
+  printf(1, "\n");
   printf(1, "\n");
   return 0;
 }
