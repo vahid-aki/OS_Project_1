@@ -32,6 +32,8 @@ int changePolicy(int);
 int waitForChild(struct timeVariables*);
 int ticketlockInit(void);
 int ticketlockTest(void);
+int rwinit(void);
+int rwtest(uint);
 
 // ulib.c
 int stat(const char*, struct stat*);

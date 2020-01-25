@@ -160,3 +160,21 @@ sys_ticketlockTest(void)
       return -1;
     return ticketlockTest();
 }
+
+int
+sys_rwinit(void)
+{
+  int sharedCounter;
+  if(argint(0, &sharedCounter) < 0)
+    return -1;
+  return 0;
+}
+
+int
+sys_rwtest(void)
+{
+    int pattern;
+    if(argint(0, &pattern) < 0)
+      return -1;
+    return rwtest(pattern);
+}

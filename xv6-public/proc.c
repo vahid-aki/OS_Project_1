@@ -17,8 +17,12 @@ struct {
 
 static struct proc *initproc;
 
+struct ticketlock mutex, write;
+
 int nextpid = 1;
 int sharedCounter = 0;
+int ReaderCount = 0;
+
 extern void forkret(void);
 extern void trapret(void);
 
@@ -736,4 +740,45 @@ ticketlockTest(void)
   sharedCounter++;
   releaseTicketlock(&ptable.tlock);
   return sharedCounter;
+}
+
+int
+rwinit(void)
+{
+    sharedCounter = 0;
+    initTicketlock(&mutex, "mutex");
+    initTicketlock(&write, "write");
+    return 0;
+}
+
+int
+rwtest(uint pattern)
+{
+    // Writer
+    if (pattern == 1)
+    {
+        acquireTicketlock(&write);
+        sharedCounter++;
+        releaseTicketlock(&write);
+    }
+
+    // Reader
+    else if (pattern == 0)
+    {
+        acquireTicketlock(&mutex);
+        ReaderCount++;
+        if (ReaderCount == 1)
+            acquireTicketlock(&write);
+        releaseTicketlock(&mutex);
+
+        sharedCounter += 0;
+
+        acquireTicketlock(&mutex);
+        ReaderCount--;
+        if (ReaderCount == 0)
+            releaseTicketlock(&write);
+        releaseTicketlock(&mutex);
+    }
+
+    return sharedCounter;
 }
