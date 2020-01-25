@@ -9,6 +9,7 @@ struct spinlock;
 struct sleeplock;
 struct stat;
 struct superblock;
+struct ticketlock;
 
 // extern static int policy;
 
@@ -129,6 +130,9 @@ int             minPriority();
 int             changePolicy(int);
 int             waitForChild(struct timeVariables*);
 void            update_time();
+void            wakeupTicketlock(int);
+int             ticketlockInit(void);
+int             ticketlockTest(void);
 
 // swtch.S
 void            swtch(struct context**, struct context*);
@@ -147,6 +151,11 @@ void            acquiresleep(struct sleeplock*);
 void            releasesleep(struct sleeplock*);
 int             holdingsleep(struct sleeplock*);
 void            initsleeplock(struct sleeplock*, char*);
+
+// ticketlock.c
+void            acquireTicketlock(struct ticketlock *);
+void            releaseTicketlock(struct ticketlock *);
+void            initTicketlock(struct ticketlock*, char *);
 
 // string.c
 int             memcmp(const void*, const void*, uint);

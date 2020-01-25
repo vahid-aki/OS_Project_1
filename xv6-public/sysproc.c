@@ -119,7 +119,7 @@ sys_changePriority(void) {
   if(priority_num > 5 || priority_num < 1)
     return -1;
   myproc()->priority = priority_num;
-    return 0;
+  return 0;
 }
 
 int
@@ -141,4 +141,22 @@ sys_waitForChild(void)
   if (argptr(0, (void*)&time_variable, sizeof(*time_variable)) < 0)
     return -1;
   return waitForChild(time_variable);
+}
+
+int
+sys_ticketlockInit(void)
+{
+    int sharedCounter;
+    if(argint(0,&sharedCounter) < 0)
+      return -1;
+    return 0;
+}
+
+int
+sys_ticketlockTest(void)
+{
+    int sharedCounter;
+    if(argint(0,&sharedCounter) < 0)
+      return -1;
+    return ticketlockTest();
 }

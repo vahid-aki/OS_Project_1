@@ -6,25 +6,30 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
+#include "ticketlock.h"
 
 static int policy = 0;
 struct {
   struct spinlock lock;
+  struct ticketlock tlock;
   struct proc proc[NPROC];
 } ptable;
 
 static struct proc *initproc;
 
 int nextpid = 1;
+int sharedCounter = 0;
 extern void forkret(void);
 extern void trapret(void);
 
 static void wakeup1(void *chan);
+static void wakeup1Ticketlock(int pid);
 
 void
 pinit(void)
 {
   initlock(&ptable.lock, "ptable");
+  initTicketlock(&ptable.tlock, "ptable_tlock");
 }
 
 // Must be called with interrupts disabled
@@ -501,6 +506,27 @@ wakeup(void *chan)
   release(&ptable.lock);
 }
 
+// Wake up the process.
+// The ptable lock must be held.
+static void
+wakeup1Ticketlock(int pid)
+{
+    struct proc *p;
+
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+        if(p->state == SLEEPING && p->pid == pid)
+            p->state = RUNNABLE;
+}
+
+// Wake up the process.
+void
+wakeupTicketlock(int pid)
+{
+    acquire(&ptable.lock);
+    wakeup1Ticketlock(pid);
+    release(&ptable.lock);
+}
+
 // Kill the process with the given pid.
 // Process won't exit until it returns
 // to user space (see trap in trap.c).
@@ -693,4 +719,21 @@ update_time(){
         continue;
   }
   release(&ptable.lock);
+}
+
+int
+ticketlockInit(void)
+{
+  sharedCounter = 0;
+  initTicketlock(&ptable.tlock,"ticketlock");
+  return 0;
+}
+
+int
+ticketlockTest(void)
+{
+  acquireTicketlock(&ptable.tlock);
+  sharedCounter++;
+  releaseTicketlock(&ptable.tlock);
+  return sharedCounter;
 }
