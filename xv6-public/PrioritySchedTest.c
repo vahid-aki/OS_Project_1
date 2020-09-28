@@ -26,32 +26,44 @@ int main(int argc, char const *argv[])
     if(f == 0)
     {
       changePriority(5-i/5);
-
       for (int j=0; j<N; j++)
           printf(1,"[%d]: [%d]\n", i, j);
       exit();
     }
   }
 
+
   for (int i=0; i<fork_num; i++)
     pid[i] = waitForChild(&time_variable[i]);
 
   printf(1, "\n#############__Turnaround time, CBT, and Waiting time for all children__##############\n");
-  for(int i=0; i<fork_num; i++)
-  {
-    printf(1,"Process: %d \t child id: %d\n", i, pid[i]);
+  // for(int i=0; i<fork_num; i++)
+  // {
+    // printf(1,"Process: %d \t child id: %d\n", i, pid[i]);
     // printf(1, "create: %d \t terminate: %d \t sleep: %d \t ready: %d \t running: %d\n",
     //         time_variable[i].creationTime, time_variable[i].terminationTime,
     //         time_variable[i].sleepingTime, time_variable[i].readyTime, time_variable[i].runningTime);
-    printf(1, "Turnaround time: %d \t CBT: %d \t Waiting time: %d\n",
-        (time_variable[i].terminationTime - time_variable[i].creationTime),
-        time_variable[i].runningTime,
-        (time_variable[i].terminationTime - time_variable[i].creationTime - time_variable[i].runningTime));
+    int tt = 5;
+    int ttt = 0;
+  while(ttt++ != 100)
+  {
+    printf(1,"Pr");
+    for(int i=0; i<fork_num; i++)
+      if(pid[i] == tt)
+      {
+        tt++;
+        printf(1,"Process: %d \t child id: %d\n", i, pid[i]);
 
-    group_TT[i/5] += time_variable[i].terminationTime - time_variable[i].creationTime;
-    group_CBT[i/5] += time_variable[i].runningTime;
-		group_WT[i/5] += time_variable[i].terminationTime - time_variable[i].creationTime - time_variable[i].runningTime;
-    printf(1, "\n######################################################################################\n");
+        printf(1, "Turnaround time: %d \t CBT: %d \t Waiting time: %d\n",
+            (time_variable[i].terminationTime - time_variable[i].creationTime),
+            time_variable[i].runningTime,
+            (time_variable[i].terminationTime - time_variable[i].creationTime - time_variable[i].runningTime));
+
+        group_TT[i/5] += time_variable[i].terminationTime - time_variable[i].creationTime;
+        group_CBT[i/5] += time_variable[i].runningTime;
+    		group_WT[i/5] += time_variable[i].terminationTime - time_variable[i].creationTime - time_variable[i].runningTime;
+        printf(1, "\n######################################################################################\n");
+      }
   }
 
   printf(1, "######################################################################################\n");
